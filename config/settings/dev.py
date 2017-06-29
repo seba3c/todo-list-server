@@ -1,6 +1,6 @@
 import os
 
-from todo_list_server.settings.base import *
+from config.settings.base import *
 
 DEBUG = True
 
