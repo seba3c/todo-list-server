@@ -4,11 +4,12 @@ from todo_list_server.settings.base import *
 
 DEBUG = True
 
-LOGGING_DEFAULT_LEVEL = 'DEBUG'
+LOGGING_DEFAULT_LEVEL = 'ERROR'
+LOGGING_APPS_LEVEL = 'DEBUG'
 LOGGING_CONSOLE_HANDLER = 'console'
 LOGGING_FILE_HANDLER = 'file_default'
-LOGGING_DEFAULT_FILENAME = os.path.join(LOGS_DIR, 'todolist.log')
 LOGGING_DEFAULT_HANDLERS = [LOGGING_CONSOLE_HANDLER, LOGGING_FILE_HANDLER]
+LOGGING_DEFAULT_FILENAME = os.path.join(LOGS_DIR, 'todolist.log')
 
 # Logging config
 LOGGING = {
@@ -55,7 +56,7 @@ LOGGING = {
         },
         'todolist': {
             'handlers': LOGGING_DEFAULT_HANDLERS,
-            'level': LOGGING_DEFAULT_LEVEL,
+            'level': LOGGING_APPS_LEVEL,
             'propagate': False,
         },
     }
