@@ -19,6 +19,8 @@ PROJECT_ROOT_DIR = os.path.abspath(os.path.join(os.path.join(os.path.dirname(__f
 BIN_DIR = os.path.join(PROJECT_ROOT_DIR, 'bin')
 LOGS_DIR = os.path.join(BIN_DIR, 'logs')
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, 'static')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -40,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'django_filters',
 ]
 
 INSTALLED_APPS += [
@@ -125,3 +130,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
