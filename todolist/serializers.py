@@ -12,3 +12,12 @@ class TodoListSerializer1(serializers.ModelSerializer):
         fields = ('id',
                   'title',
                   'created_at')
+
+
+class TodoListSerializer2(TodoListSerializer1):
+
+    class Meta:
+        model = TodoList
+        fields = ('id',
+                  'title',
+                  'created_at')
