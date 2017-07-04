@@ -17,6 +17,7 @@ class TodoList(models.Model):
     class Meta:
         verbose_name = "TODO-LIST"
         verbose_name_plural = "TODO-LISTs"
+        ordering = ['-created_at']
 
 
 class TodoListItem(models.Model):
