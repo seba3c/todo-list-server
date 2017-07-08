@@ -5,23 +5,20 @@ from rest_framework import serializers
 from todolist.models import TodoList, Label
 
 
-class TodoListSerializer1(serializers.ModelSerializer):
-
-    class Meta:
-        model = TodoList
-        fields = ('id',
-                  'title',
-                  'created_at')
-
-
-class TodoListSerializer2(TodoListSerializer1):
+class TodoListSerializer(serializers.HyperlinkedModelSerializer):
 
     item_count = serializers.SerializerMethodField()
     label_count = serializers.SerializerMethodField()
 
-    class Meta(TodoListSerializer1.Meta):
-        fields = TodoListSerializer1.Meta.fields + ('item_count',
-                                                    'label_count')
+    class Meta():
+        model = TodoList
+        fields = ('id',
+                  'title',
+                  'created_at',
+                  'item_count',
+                  'label_count',
+                  'labels',
+                  'url')
 
     def get_item_count(self, obj):
         return obj.get_items_count()
@@ -30,26 +27,12 @@ class TodoListSerializer2(TodoListSerializer1):
         return obj.get_label_count()
 
 
-class TodoListSerializer3(TodoListSerializer2):
-
-    class Meta(TodoListSerializer2.Meta):
-        fields = TodoListSerializer2.Meta.fields + ('labels', )
-
-
-class LabelSerializer1(serializers.ModelSerializer):
-
-    class Meta:
-        model = Label
-        fields = ('id',
-                  'name')
-
-
-class LabelSerializer2(serializers.ModelSerializer):
-
-    url = serializers.HyperlinkedIdentityField(view_name='labels-2-detail')
+class LabelSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Label
         fields = ('id',
                   'name',
+                  'display_name',
                   'url')
+        read_only_fields = ('display_name',)

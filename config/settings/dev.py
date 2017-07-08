@@ -4,6 +4,8 @@ from config.settings.base import *
 
 DEBUG = True
 
+ENABLE_EXAMPLES = False
+
 LOGGING_DEFAULT_LEVEL = 'ERROR'
 LOGGING_APPS_LEVEL = 'DEBUG'
 LOGGING_CONSOLE_HANDLER = 'console'

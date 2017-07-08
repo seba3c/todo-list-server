@@ -1,6 +1,11 @@
 eclipse.preferences.version=1
+encoding//core/exceptions.py=utf-8
+encoding//core/pagination.py=utf-8
 encoding//todolist/api.py=utf-8
+encoding//todolist/api_examples.py=utf-8
 encoding//todolist/models.py=utf-8
 encoding//todolist/renderers.py=utf-8
 encoding//todolist/serializers.py=utf-8
+encoding//todolist/serializers_examples.py=utf-8
+encoding//todolist/signals.py=utf-8
 encoding//todolist/urls.py=utf-8
