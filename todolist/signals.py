@@ -11,6 +11,5 @@ logger = logging.getLogger(__name__)
 
 @receiver(pre_save, sender=Label)
 def label_pre_save_signal(sender, instance, **kwargs):
-    if instance.name:
-        instance.display_name = instance.name
-        instance.name = instance.name.lower().strip()
+    # do something before save
+    pass

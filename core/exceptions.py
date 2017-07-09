@@ -28,8 +28,11 @@ def custom_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
     if isinstance(exc, Http404):
+        detail = _('Entidad no encontrada')
+        if hasattr(exc, 'message'):
+            detail = exc.message
         custom_response_data = {
-            'detail': exc.message  # custom exception message
+            'detail': detail  # custom exception message
         }
         response.data = custom_response_data  # set the custom response data on response object
 

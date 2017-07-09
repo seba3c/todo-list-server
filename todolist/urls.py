@@ -11,7 +11,7 @@ from todolist.api_examples import (TodoListViewSet1,
                                    LabelViewSet2)
 
 from todolist.api import (TodoListViewSet,
-                          LabelViewSet)
+                          LabelViewSet, TodoListItemViewSet)
 
 API_VERSION = 'v1'
 
@@ -40,6 +40,10 @@ api_router.register(r'%s/todolists' % API_PREFIX,
 
 api_router.register(r'%s/labels' % API_PREFIX,
                     LabelViewSet, base_name='label')
+
+api_router.register(r'%s/todolists/(?P<todolist_pk>[0-9]+)/items' % API_PREFIX,
+                    TodoListItemViewSet,
+                    base_name='todolist-items')
 
 urlpatterns = [url(r'^', include(api_router.urls)),
                ]
